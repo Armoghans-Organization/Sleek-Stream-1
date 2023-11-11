@@ -1,37 +1,62 @@
 <header>
-    <nav>
-        <h1>{{ site.Title }}</h1>
-        {{ partial "menu.html" (dict "menuID" "main" "page" .) }}
-    </nav>
-    <div class="justify-center grid items-center h-screen">
-        <div class="bg-dark-mode-white">
-            <button class="border p-2" onclick="toggleTheme()">
-                Switch theme
-            </button>
+
+
+    <nav class="light-nav">
+        <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+            <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
+                <!-- <img src="https://flowbite.com/docs/images/logo.svg" class="h-8" alt="Logo" /> -->
+                <span class="self-center text-2xl font-semibold whitespace-nowrap">{{ site.Title
+                    }}</span>
+            </a>
+            <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
+
+                <div class="inline-flex rounded-md shadow-sm" role="group">
+                    <button type="button"
+                        class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 rounded-s-lg">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                            style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;">
+                            <path
+                                d="M10 18a7.952 7.952 0 0 0 4.897-1.688l4.396 4.396 1.414-1.414-4.396-4.396A7.952 7.952 0 0 0 18 10c0-4.411-3.589-8-8-8s-8 3.589-8 8 3.589 8 8 8zm0-14c3.309 0 6 2.691 6 6s-2.691 6-6 6-6-2.691-6-6 2.691-6 6-6z">
+                            </path>
+                        </svg>
+                    </button>
+
+                    <button onclick="toggleTheme()"
+                        class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 rounded-e-lg">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                            class="dark-svg" style="fill: rgba(0, 0, 0, 1); display: none;">
+                            <!-- Dark mode path data -->
+                            <path
+                                d="M20.742 13.045a8.088 8.088 0 0 1-2.077.271c-2.135 0-4.14-.83-5.646-2.336a8.025 8.025 0 0 1-2.064-7.723A1 1 0 0 0 9.73 2.034a10.014 10.014 0 0 0-4.489 2.582c-3.898 3.898-3.898 10.243 0 14.143a9.937 9.937 0 0 0 7.072 2.93 9.93 9.93 0 0 0 7.07-2.929 10.007 10.007 0 0 0 2.583-4.491 1.001 1.001 0 0 0-1.224-1.224zm-2.772 4.301a7.947 7.947 0 0 1-5.656 2.343 7.953 7.953 0 0 1-5.658-2.344c-3.118-3.119-3.118-8.195 0-11.314a7.923 7.923 0 0 1 2.06-1.483 10.027 10.027 0 0 0 2.89 7.848 9.972 9.972 0 0 0 7.848 2.891 8.036 8.036 0 0 1-1.484 2.059z">
+                            </path>
+                        </svg>
+
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                            class="light-svg" style="fill: rgba(0, 0, 0, 1);">
+                            <!-- Light mode path data -->
+                            <path
+                                d="M6.993 12c0 2.761 2.246 5.007 5.007 5.007s5.007-2.246 5.007-5.007S14.761 6.993 12 6.993 6.993 9.239 6.993 12zM12 8.993c1.658 0 3.007 1.349 3.007 3.007S13.658 15.007 12 15.007 8.993 13.658 8.993 12 10.342 8.993 12 8.993zM10.998 19h2v3h-2zm0-17h2v3h-2zm-9 9h3v2h-3zm17 0h3v2h-3zM4.219 18.363l2.12-2.122 1.415 1.414-2.12 2.122zM16.24 6.344l2.122-2.122 1.414 1.414-2.122 2.122zM6.342 7.759 4.22 5.637l1.415-1.414 2.12 2.122zm13.434 10.605-1.414 1.414-2.122-2.122 1.414-1.414z">
+                            </path>
+                        </svg>
+                    </button>
+
+
+                </div>
+
+                <button data-collapse-toggle="navbar-cta" type="button"
+                    class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+                    aria-controls="navbar-cta" aria-expanded="false">
+                    <span class="sr-only">Open main menu</span>
+                    <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                        viewBox="0 0 17 14">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M1 1h15M1 7h15M1 13h15" />
+                    </svg>
+                </button>
+            </div>
+            {{ partial "menu.html" . }}
         </div>
-    </div>
+
+    </nav>
+
 </header>
-
-<script>
-    // Function to toggle between light and dark themes
-    function toggleTheme() {
-        const body = document.body;
-        body.classList.toggle('dark-mode');
-
-        // Store the theme preference in localStorage
-        const isDarkMode = body.classList.contains('dark-mode');
-        localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
-    }
-
-    // Function to set the theme on page load
-    function setThemeOnLoad() {
-        const savedTheme = localStorage.getItem('theme');
-
-        if (savedTheme === 'dark') {
-            document.body.classList.add('dark-mode');
-        }
-    }
-
-    // Set the theme when the page loads
-    document.addEventListener('DOMContentLoaded', setThemeOnLoad);
-</script>
