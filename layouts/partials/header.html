@@ -3,4 +3,35 @@
         <h1>{{ site.Title }}</h1>
         {{ partial "menu.html" (dict "menuID" "main" "page" .) }}
     </nav>
+    <div class="justify-center grid items-center h-screen">
+        <div class="bg-dark-mode-white">
+            <button class="border p-2" onclick="toggleTheme()">
+                Switch theme
+            </button>
+        </div>
+    </div>
 </header>
+
+<script>
+    // Function to toggle between light and dark themes
+    function toggleTheme() {
+        const body = document.body;
+        body.classList.toggle('dark-mode');
+
+        // Store the theme preference in localStorage
+        const isDarkMode = body.classList.contains('dark-mode');
+        localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
+    }
+
+    // Function to set the theme on page load
+    function setThemeOnLoad() {
+        const savedTheme = localStorage.getItem('theme');
+
+        if (savedTheme === 'dark') {
+            document.body.classList.add('dark-mode');
+        }
+    }
+
+    // Set the theme when the page loads
+    document.addEventListener('DOMContentLoaded', setThemeOnLoad);
+</script>

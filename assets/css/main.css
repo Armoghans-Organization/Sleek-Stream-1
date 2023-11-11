@@ -9,8 +9,12 @@
 /* put site specific css styles here using the @layer directive */
 /* see https://tailwindcss.com/docs/functions-and-directives#layer */
 @layer components {
-    .background{
+    .light-mode {
         @apply bg-gradient-to-r from-purple-300 to-blue-200 text-slate-600;
+    }
+
+    .dark-mode {
+        @apply bg-gradient-to-r from-gray-800 to-gray-600 text-white;
     }
 
     .welcome-headline {
