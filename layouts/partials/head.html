@@ -37,4 +37,50 @@
     {{ partialCached "head/css.html" . }}
     <!-- Custom CSS styles -->
     <link rel="stylesheet" href="css/custom.css">
+    <!-- ======================================================================== -->
+    <!-- ======================== Theme Changer Script ========================== -->
+    <!-- ========================================================================-->
+    <script>
+        // Function to toggle between light and dark themes
+        function toggleTheme() {
+            const body = document.body;
+            body.classList.toggle('dark-mode');
+            // Store the theme preference in localStorage
+            const isDarkMode = body.classList.contains('dark-mode');
+            localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
+            // Apply the 'dark-nav' class to the navigation element when dark mode is active
+            const nav = document.querySelector('nav');
+            if (nav) {
+                nav.classList.toggle('dark-nav', isDarkMode);
+            }
+            // Toggle the visibility of the light and dark SVGs
+            const lightSvg = document.querySelector('.light-svg');
+            const darkSvg = document.querySelector('.dark-svg');
+            if (lightSvg && darkSvg) {
+                lightSvg.style.display = isDarkMode ? 'block' : 'none';
+                darkSvg.style.display = isDarkMode ? 'none' : 'block';
+            }
+        }
+        // Function to set the theme on page load
+        function setThemeOnLoad() {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark') {
+                document.body.classList.add('dark-mode');
+                // Apply the 'dark-nav' class to the navigation element when dark mode is active
+                const nav = document.querySelector('nav');
+                if (nav) {
+                    nav.classList.add('dark-nav');
+                }
+                // Show the dark SVG and hide the light SVG
+                const lightSvg = document.querySelector('.light-svg');
+                const darkSvg = document.querySelector('.dark-svg');
+                if (lightSvg && darkSvg) {
+                    lightSvg.style.display = 'none';
+                    darkSvg.style.display = 'block';
+                }
+            }
+        }
+        // Set the theme when the page loads
+        document.addEventListener('DOMContentLoaded', setThemeOnLoad);
+    </script>
 </head>
