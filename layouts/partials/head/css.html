@@ -1,4 +1,4 @@
-{{- with resources.Get "css/main.css" }}
+{{- with resources.Get "css/main.css" | postCSS (dict "config" "./assets/css/postcss.config.js") }}
 <!-- Check if the main.css resource exists -->
 
 {{- if eq hugo.Environment "development" }}

@@ -4,9 +4,9 @@
 
 {{ partial "head.html" . }}
 
-<body>
+<body class="background">
   {{ partial "header.html" . }}
-  <!-- {{- partial "dev/dev-tools.html" . -}} -->
+  {{- partial "dev/dev-tools.html" . -}}
   <main>
     {{ block "main" . }}{{ end }}
   </main>

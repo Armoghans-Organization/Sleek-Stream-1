@@ -1,22 +1,19 @@
-body {
-  color: #222;
-  font-family: sans-serif;
-  line-height: 1.5;
-  margin: 1rem;
-  max-width: 768px;
-}
+/* TailwindCSS base styles */
+/* see https://tailwindcss.com/docs/functions-and-directives#tailwind */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@tailwind variants;
 
-header {
-  border-bottom: 1px solid #222;
-  margin-bottom: 1rem;
-}
+/* Site Specific */
+/* put site specific css styles here using the @layer directive */
+/* see https://tailwindcss.com/docs/functions-and-directives#layer */
+@layer components {
+    .background{
+        @apply bg-gradient-to-r from-purple-300 to-blue-200 text-slate-600;
+    }
 
-footer {
-  border-top: 1px solid #222;
-  margin-top: 1rem;
-}
-
-a {
-  color: #00e;
-  text-decoration: none;
+    .welcome-headline {
+        @apply text-sky-600;
+    }
 }
